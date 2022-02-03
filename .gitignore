@@ -1,0 +1,9 @@
+# Project Configurations
+.env
+test.php
+
+# Code Editor Files
+.vscode
+.ftpconfig
+.ftpignore
+project.cson

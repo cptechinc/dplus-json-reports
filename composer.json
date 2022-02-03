@@ -1,0 +1,10 @@
+{
+	"autoload": {
+		"psr-4": {
+			"Dplus\\Reports\\Json\\": "src/"
+		}
+	},
+	"require-dev": {
+		"phpoffice/phpspreadsheet": "dev-master#11575ef3c416aa9c0be1ae3dfd3cad8d385a418c"
+	}
+}
