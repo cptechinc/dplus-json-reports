@@ -1,4 +1,6 @@
 {
+	"name": "cptechinc/dplus-json-reports",
+	"type": "library",
 	"autoload": {
 		"psr-4": {
 			"Dplus\\Reports\\Json\\": "src/"
