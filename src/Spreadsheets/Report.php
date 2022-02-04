@@ -1,4 +1,4 @@
-<?php namespace Dplus\Reports\Spreadsheets;
+<?php namespace Dplus\Reports\Json\Spreadsheets;
 // PhpSpreadsheet Library
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style as SpreadsheetStyles;
