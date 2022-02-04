@@ -9,8 +9,8 @@
  */
 class Report {
 	const CODE = '';
-	protected $id;
-	public $errorMsg;
+	protected $id = '';
+	public $errorMsg = '';
 	protected $json;
 
 	/**
@@ -29,6 +29,14 @@ class Report {
 	 */
 	public function getJson() {
 		return $this->json;
+	}
+
+	/**
+	 * Return Report ID
+	 * @return string
+	 */
+	public function getId() {
+		return $this->id;
 	}
 
 	/**
