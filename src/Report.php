@@ -79,6 +79,7 @@ class Report {
 		}
 		$jsonContainer = new Report\Json(static::CODE, $this->id);
 		$jsonContainer->setJson($json);
+		$this->json = $jsonContainer;
 		return true;
 	}
 
