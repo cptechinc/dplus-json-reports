@@ -1,4 +1,4 @@
-<?php namespace Dplus\Reports\Spreadsheets;
+<?php namespace Dplus\Reports\Json\Spreadsheets;
 // PhpSpreadsheet Library
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
@@ -14,6 +14,7 @@ use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
  * @property string $fileprefix Prefix to Filename
  */
 abstract class Writer {
+	const EXTENSION = 'txt';
 	public $filename;
 	public $fileprefix;
 	protected static $dir;
@@ -61,6 +62,7 @@ abstract class Writer {
 	 */
 	public function write(Spreadsheet $spreadsheet) {
 		$writer  = $this->getWriter($spreadsheet);
+		echo $this->getFilepath();
 		$success = $writer->save($this->getFilepath());
 		return true;
 	}

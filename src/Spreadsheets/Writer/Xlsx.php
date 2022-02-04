@@ -1,9 +1,9 @@
-<?php namespace Dplus\Reports\Spreadsheets\Writer;
+<?php namespace Dplus\Reports\Json\Spreadsheets\Writer;
 // PhpSpreadsheet Library
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx as WriterXlsx;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 // Dplus Spreadsheets
-use Dplus\Reports\Spreadsheets\Writer;
+use Dplus\Reports\Json\Spreadsheets\Writer;
 
 /**
  * Writer\Xlsx
