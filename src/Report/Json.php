@@ -17,9 +17,33 @@ class Json {
 	protected $fields = [];
 	protected $data   = [];
 
+	/** @var array Justify codes for each fieldtype code */
+	const FIELDTYPE_JUSTIFY = [
+		'C' => 'left',
+		'D' => 'left',
+		'I' => 'right',
+		'N' => 'right'
+	];
+
 	public function __construct($report, $id) {
 		$this->report = $report;
 		$this->id = $id;
+	}
+
+	/**
+	 * Return Fields Data
+	 * @return array
+	 */
+	public function getFields() {
+		return $this->fields;
+	}
+
+	/**
+	 * Return Report Data
+	 * @return array
+	 */
+	public function getData() {
+		return $this->data;
 	}
 
 	/**
@@ -33,14 +57,24 @@ class Json {
 	}
 
 	/**
+	 * Return Field Justify Code for field
+	 * @param  string $key Fieldname / Key
+	 * @return string
+	 */
+	public function getFieldJustify($key) {
+		$field = $this->fields[$key];
+		return self::FIELDTYPE_JUSTIFY[$field['type']];
+	}
+
+	/**
 	 * Parse JSON data into properties
 	 * @return void
 	 */
 	protected function parseJson() {
-		$this->codeid = $this->json['report'] . '-' . $this->json['reportID'];
+		$this->id = $this->json['reportid'];
 
-		if (array_key_exists('fields', $this->json)) {
-			$this->data = $this->json['fields'];
+		if (array_key_exists('columnlabels', $this->json)) {
+			$this->fields = $this->json['columnlabels'];
 		}
 
 		if (array_key_exists('data', $this->json)) {
