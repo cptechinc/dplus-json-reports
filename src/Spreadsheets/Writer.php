@@ -15,8 +15,9 @@ use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
  */
 abstract class Writer {
 	const EXTENSION = 'txt';
-	public $filename;
-	public $fileprefix;
+	public $filename = '';
+	public $fileprefix = '';
+	public $lastWrittenFile = '';
 	protected static $dir;
 
 	/**
@@ -62,8 +63,13 @@ abstract class Writer {
 	 */
 	public function write(Spreadsheet $spreadsheet) {
 		$writer  = $this->getWriter($spreadsheet);
-		echo $this->getFilepath();
-		$success = $writer->save($this->getFilepath());
+		$writer->save($this->getFilepath());
+		$saved = file_exists($this->getFilepath());
+
+		if ($saved === false) {
+			return false;
+		}
+		$this->lastWrittenFile = $this->getFilepath();
 		return true;
 	}
 
