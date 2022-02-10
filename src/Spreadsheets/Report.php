@@ -110,9 +110,10 @@ class Report {
 			$cell->getStyle()->applyFromArray(static::STYLES_COLUMN_HEADER);
 			$cell->getStyle()->getAlignment()->setHorizontal(Writer::getAlignmentCode($this->json->getFieldJustify($key)));
 			$cell->setValue($field['label']);
-
 			$i++;
 		}
+		// Freeze Column Heading Rows
+		$sheet->freezePane('A2'); 
 	}
 
 	protected function generateBody() {
