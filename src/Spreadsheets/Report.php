@@ -102,7 +102,8 @@ class Report {
 		Writer::setColumnsAutowidth($sheet, $colCount);
 
 		$row = 1;
-		$i   = 1;
+		// If Report has headers, push columns to the right 
+		$i   = $this->json->hasHeaders() ? 2 : 1;
 		
 		foreach ($this->json->getFields() as $key => $field) {
 			$cell = $sheet->getCellByColumnAndRow($i, $row);
@@ -125,22 +126,24 @@ class Report {
 			$cell->getStyle()->applyFromArray(static::STYLES_RECORD_HEADING);
 			$cell->setValue($record['header']);
 
-			
 			$c1 = Coordinate::stringFromColumnIndex(1) . $row;
 			$c2 = Coordinate::stringFromColumnIndex($colCount + 1) . $row;
 			$sheet->mergeCells("$c1:$c2");
 			$row++;
 
-			foreach ($record['detail'] as $detail) {
-				$i = 1;
-
-				foreach ($this->json->getFields() as $key => $field) {
-					$cell = $sheet->getCellByColumnAndRow($i, $row);
-					$cell->getStyle()->getAlignment()->setHorizontal(Writer::getAlignmentCode($this->json->getFieldJustify($key)));
-					$cell->setValueExplicit($detail[$key], static::FIELDTYPE_DATATYPE[$field['type']]);
-					$i++;
+			if (array_key_exists('detail', $record)) {
+				foreach ($record['detail'] as $detail) {
+					// If Report has headers, push columns to the right 
+					$i = $this->json->hasHeaders() ? 2 : 1;
+	
+					foreach ($this->json->getFields() as $key => $field) {
+						$cell = $sheet->getCellByColumnAndRow($i, $row);
+						$cell->getStyle()->getAlignment()->setHorizontal(Writer::getAlignmentCode($this->json->getFieldJustify($key)));
+						$cell->setValueExplicit($detail[$key], static::FIELDTYPE_DATATYPE[$field['type']]);
+						$i++;
+					}
+					$row++;
 				}
-				$row++;
 			}
 		}
 	}
