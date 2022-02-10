@@ -116,6 +116,10 @@ class Report {
 		$sheet->freezePane('A2'); 
 	}
 
+	/**
+	 * Populate Spreadsheet with Report Data
+	 * @return void
+	 */
 	protected function generateBody() {
 		$sheet = $this->spreadsheet->getActiveSheet();
 		$row   = $this->getNewRowIndex();
