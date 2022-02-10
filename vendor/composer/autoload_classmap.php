@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Dplus\\Reports\\Files\\Copier' => $baseDir . '/src/Files/Copier.php',
+    'Dplus\\Reports\\Files\\File' => $baseDir . '/src/Files/File.php',
     'Dplus\\Reports\\Json\\Fetcher' => $baseDir . '/src/Json/Fetcher.php',
     'Dplus\\Reports\\Json\\Report' => $baseDir . '/src/Json/Report.php',
     'Dplus\\Reports\\Json\\Report\\Json' => $baseDir . '/src/Json/Report/Json.php',

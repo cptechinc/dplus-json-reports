@@ -22,6 +22,8 @@ class ComposerStaticInitd47fa3e11cbff97b4c9603adab4e69a5
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dplus\\Reports\\Files\\Copier' => __DIR__ . '/../..' . '/src/Files/Copier.php',
+        'Dplus\\Reports\\Files\\File' => __DIR__ . '/../..' . '/src/Files/File.php',
         'Dplus\\Reports\\Json\\Fetcher' => __DIR__ . '/../..' . '/src/Json/Fetcher.php',
         'Dplus\\Reports\\Json\\Report' => __DIR__ . '/../..' . '/src/Json/Report.php',
         'Dplus\\Reports\\Json\\Report\\Json' => __DIR__ . '/../..' . '/src/Json/Report/Json.php',
