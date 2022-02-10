@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Dplus\\Reports\\Json\\' => array($baseDir . '/src/Json'),
+    'Dplus\\Reports\\' => array($baseDir . '/src'),
 );

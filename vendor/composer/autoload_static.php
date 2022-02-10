@@ -9,14 +9,14 @@ class ComposerStaticInitd47fa3e11cbff97b4c9603adab4e69a5
     public static $prefixLengthsPsr4 = array (
         'D' => 
         array (
-            'Dplus\\Reports\\Json\\' => 19,
+            'Dplus\\Reports\\' => 14,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Dplus\\Reports\\Json\\' => 
+        'Dplus\\Reports\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Json',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
