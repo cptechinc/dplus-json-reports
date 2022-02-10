@@ -7,4 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Dplus\\Reports\\Json\\Fetcher' => $baseDir . '/src/Reports/Fetcher.php',
+    'Dplus\\Reports\\Json\\Report' => $baseDir . '/src/Reports/Report.php',
+    'Dplus\\Reports\\Json\\Report\\Json' => $baseDir . '/src/Reports/Report/Json.php',
+    'Dplus\\Reports\\Json\\Report\\Pol' => $baseDir . '/src/Reports/Report/Pol.php',
+    'Dplus\\Reports\\Json\\Requests\\Cgibin' => $baseDir . '/src/Reports/Requests/Cgibin.php',
+    'Dplus\\Reports\\Json\\Requests\\Writer' => $baseDir . '/src/Reports/Requests/Writer.php',
+    'Dplus\\Reports\\Json\\Spreadsheets\\Report' => $baseDir . '/src/Reports/Spreadsheets/Report.php',
+    'Dplus\\Reports\\Json\\Spreadsheets\\Writer' => $baseDir . '/src/Reports/Spreadsheets/Writer.php',
+    'Dplus\\Reports\\Json\\Spreadsheets\\Writer\\Xlsx' => $baseDir . '/src/Reports/Spreadsheets/Writer/Xlsx.php',
 );

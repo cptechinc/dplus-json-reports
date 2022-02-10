@@ -16,12 +16,21 @@ class ComposerStaticInitd47fa3e11cbff97b4c9603adab4e69a5
     public static $prefixDirsPsr4 = array (
         'Dplus\\Reports\\Json\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/src/Reports',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dplus\\Reports\\Json\\Fetcher' => __DIR__ . '/../..' . '/src/Reports/Fetcher.php',
+        'Dplus\\Reports\\Json\\Report' => __DIR__ . '/../..' . '/src/Reports/Report.php',
+        'Dplus\\Reports\\Json\\Report\\Json' => __DIR__ . '/../..' . '/src/Reports/Report/Json.php',
+        'Dplus\\Reports\\Json\\Report\\Pol' => __DIR__ . '/../..' . '/src/Reports/Report/Pol.php',
+        'Dplus\\Reports\\Json\\Requests\\Cgibin' => __DIR__ . '/../..' . '/src/Reports/Requests/Cgibin.php',
+        'Dplus\\Reports\\Json\\Requests\\Writer' => __DIR__ . '/../..' . '/src/Reports/Requests/Writer.php',
+        'Dplus\\Reports\\Json\\Spreadsheets\\Report' => __DIR__ . '/../..' . '/src/Reports/Spreadsheets/Report.php',
+        'Dplus\\Reports\\Json\\Spreadsheets\\Writer' => __DIR__ . '/../..' . '/src/Reports/Spreadsheets/Writer.php',
+        'Dplus\\Reports\\Json\\Spreadsheets\\Writer\\Xlsx' => __DIR__ . '/../..' . '/src/Reports/Spreadsheets/Writer/Xlsx.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
