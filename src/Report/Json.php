@@ -4,18 +4,20 @@
  * Json
  * Container for the JSON report
  * 
- * @property string $report Report Code
- * @property string $id     Report ID
- * @property array  $json   Full JSON data
- * @property array  $fields Column Data
- * @property array  $data   The Report Data
+ * @property string $report 	 Report Code
+ * @property string $id 		 Report ID
+ * @property array	$json		 Full JSON data
+ * @property array	$fields 	 Column Data
+ * @property array	$data		 The Report Data
+ * @property bool	$hasHeaders  Does Report Have Headings? (Different from Column Headings)
  */
 class Json {
 	protected $report = '';
-	protected $id     = '';
+	protected $id	  = '';
 	protected $json   = [];
 	protected $fields = [];
 	protected $data   = [];
+	protected $hasHeaders = false;
 
 	/** @var array Justify codes for each fieldtype code */
 	const FIELDTYPE_JUSTIFY = [
@@ -44,6 +46,14 @@ class Json {
 	 */
 	public function getData() {
 		return $this->data;
+	}
+
+	/**
+	 * Return if Report Has Headers
+	 * @return bool
+	 */
+	public function hasHeaders() {
+		return $this->hasHeaders;
 	}
 
 	/**
@@ -80,5 +90,20 @@ class Json {
 		if (array_key_exists('data', $this->json)) {
 			$this->data = $this->json['data'];
 		}
+
+		$this->hasHeaders = $this->parseJsonForHeaders();
+	}
+
+	/**
+	 * Determines if JSON has heading indexes for Report
+	 * @return bool
+	 */
+	protected function parseJsonForHeaders() {
+		foreach ($this->data as $record) {
+			if (array_key_exists('header', $record) && $record['header']) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
