@@ -3,7 +3,7 @@
 	"type": "library",
 	"autoload": {
 		"psr-4": {
-			"Dplus\\Reports\\Json\\": "src/Reports/"
+			"Dplus\\Reports\\Json\\": "src/Json/"
 		}
 	},
 	"require-dev": {
