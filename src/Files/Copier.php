@@ -8,6 +8,7 @@
  * @property File   $originalFile
  * @property string $destinationDirectory  Directory to Copy New file to /dest/dir/
  * @property string $destinationFilename   Filename
+ * @property string $lastCopyFile          Last File that was made
  * @property string $error                 Last Error Message
  */
 class Copier {
@@ -15,6 +16,7 @@ class Copier {
 	protected $originalFile;
 	protected $destinationDirectory = '';
 	protected $destinationFilename  = '';
+	public    $lastCopyFile         = '';
 	public    $error                = '';
 
 	/**
@@ -50,7 +52,12 @@ class Copier {
 		$copyFile->setExtension($this->originalFile->getExtension());
 		$copyFile->setFilepathFromParts();
 
-		return copy($this->originalFilepath, $copyFile->getFilepath());
+		$success = copy($this->originalFilepath, $copyFile->getFilepath());
+		if ($success === false) {
+			return false;
+		}
+		$this->lastCopyFile = $copyFile->getFilepath();
+		return true;
 	}
 	
 	/**
