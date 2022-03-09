@@ -1,19 +1,25 @@
 <?php namespace Dplus\Reports\Json\Report;
 
+use Dplus\Reports\Json\Report\Emails\Email;
+
 /**
  * Emails
  * Container for Emails
  * 
- * @property array[Emails\Email] $to    Emails to Email to
- * @property Emails\Email        $from  Emails to Email from
+ * @property array[Email] $to    Emails to Email to
+ * @property Email        $from  Emails to Email from
  */
 class Emails {
 	protected $to    = [];
 	protected $from  = null;
 
+	public function hasTo() {
+		return empty($this->to) === false;
+	}
+
 
 	public function setFromEmailFromArray(array $data) {
-		$email = new Emails\Email();
+		$email = new Email();
 		$email->setFromArray($data);
 		$this->from = $email;
 	}
@@ -22,7 +28,7 @@ class Emails {
 		$emails = [];
 
 		foreach ($data as $key => $em) {
-			$email = new Emails\Email();
+			$email = new Email();
 			$email->setFromArray($em);
 			$emails[$key] = $email;
 		}
