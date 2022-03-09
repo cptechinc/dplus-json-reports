@@ -11,6 +11,8 @@ return array(
     'Dplus\\Reports\\Files\\File' => $baseDir . '/src/Files/File.php',
     'Dplus\\Reports\\Json\\Fetcher' => $baseDir . '/src/Json/Fetcher.php',
     'Dplus\\Reports\\Json\\Report' => $baseDir . '/src/Json/Report.php',
+    'Dplus\\Reports\\Json\\Report\\Emails' => $baseDir . '/src/Json/Report/Emails.php',
+    'Dplus\\Reports\\Json\\Report\\Emails\\Email' => $baseDir . '/src/Json/Report/Emails/Email.php',
     'Dplus\\Reports\\Json\\Report\\Json' => $baseDir . '/src/Json/Report/Json.php',
     'Dplus\\Reports\\Json\\Report\\Pol' => $baseDir . '/src/Json/Report/Pol.php',
     'Dplus\\Reports\\Json\\Requests\\Cgibin' => $baseDir . '/src/Json/Requests/Cgibin.php',

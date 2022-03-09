@@ -10,7 +10,7 @@
  * @property array	$fields 	 Column Data
  * @property array	$data		 The Report Data
  * @property bool	$hasHeaders  Does Report Have Headings? (Different from Column Headings)
- * @property array  $email       Emails to send Report to
+ * @property Emails $emails      
  */
 class Json {
 	protected $report = '';
@@ -19,7 +19,7 @@ class Json {
 	protected $fields = [];
 	protected $data   = [];
 	protected $hasHeaders = false;
-	protected $emails      = [];
+	protected $emails      = null;
 
 	/** @var array Justify codes for each fieldtype code */
 	const FIELDTYPE_JUSTIFY = [
@@ -32,6 +32,7 @@ class Json {
 	public function __construct($report, $id) {
 		$this->report = $report;
 		$this->id = $id;
+		$this->emails = new Emails();
 	}
 
 	/**
@@ -101,11 +102,14 @@ class Json {
 			$this->data = $this->json['data'];
 		}
 
-		if (array_key_exists('email', $this->json)) {
-			$this->emails = $this->json['email'];
-		}
-
+		$this->parseJsonEmails();
 		$this->hasHeaders = $this->parseJsonForHeaders();
+	}
+
+	protected function parseJsonEmails() {
+		if (array_key_exists('email', $this->json)) {
+			$this->emails->setToEmailsFromArray($this->json['email']);
+		}
 	}
 
 	/**

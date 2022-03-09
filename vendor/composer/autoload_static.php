@@ -26,6 +26,8 @@ class ComposerStaticInitd47fa3e11cbff97b4c9603adab4e69a5
         'Dplus\\Reports\\Files\\File' => __DIR__ . '/../..' . '/src/Files/File.php',
         'Dplus\\Reports\\Json\\Fetcher' => __DIR__ . '/../..' . '/src/Json/Fetcher.php',
         'Dplus\\Reports\\Json\\Report' => __DIR__ . '/../..' . '/src/Json/Report.php',
+        'Dplus\\Reports\\Json\\Report\\Emails' => __DIR__ . '/../..' . '/src/Json/Report/Emails.php',
+        'Dplus\\Reports\\Json\\Report\\Emails\\Email' => __DIR__ . '/../..' . '/src/Json/Report/Emails/Email.php',
         'Dplus\\Reports\\Json\\Report\\Json' => __DIR__ . '/../..' . '/src/Json/Report/Json.php',
         'Dplus\\Reports\\Json\\Report\\Pol' => __DIR__ . '/../..' . '/src/Json/Report/Pol.php',
         'Dplus\\Reports\\Json\\Requests\\Cgibin' => __DIR__ . '/../..' . '/src/Json/Requests/Cgibin.php',
