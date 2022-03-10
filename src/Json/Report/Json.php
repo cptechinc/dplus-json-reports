@@ -106,9 +106,13 @@ class Json {
 		$this->hasHeaders = $this->parseJsonForHeaders();
 	}
 
+	/**
+	 * Set Emails from JSON
+	 */
 	protected function parseJsonEmails() {
-		if (array_key_exists('email', $this->json)) {
+		if (array_key_exists('email', $this->json) && empty($this->json['email']) === false) {
 			$this->emails->setToEmailsFromArray($this->json['email']);
+			$this->emails->setFromEmailFromArray(['address' => $this->json['fromemailaddress'], 'name' => $this->json['fromemailname']]);
 		}
 	}
 
