@@ -5,12 +5,13 @@
  * Container for the JSON report
  * 
  * @property string $report 	 Report Code
- * @property string $id 		 Report ID
- * @property array	$json		 Full JSON data
- * @property array	$fields 	 Column Data
- * @property array	$data		 The Report Data
- * @property bool	$hasHeaders  Does Report Have Headings? (Different from Column Headings)
- * @property Emails $emails      Emails to Send To / From
+ * @property string   $id		 Report ID
+ * @property array	  $json		 Full JSON data
+ * @property array	  $fields	 Column Data
+ * @property array	  $data		 The Report Data
+ * @property bool	  $hasHeaders  Does Report Have Headings? (Different from Column Headings)
+ * @property Emails   $emails	   Emails to Send To / From
+ * @property SaveFile $saveFile    Directory, filename to save to
  */
 class Json {
 	protected $report = '';
@@ -19,7 +20,8 @@ class Json {
 	protected $fields = [];
 	protected $data   = [];
 	protected $hasHeaders = false;
-	protected $emails      = null;
+	protected $emails	   = null;
+	protected $saveFile    = null;
 
 	/** @var array Justify codes for each fieldtype code */
 	const FIELDTYPE_JUSTIFY = [
@@ -32,7 +34,8 @@ class Json {
 	public function __construct($report, $id) {
 		$this->report = $report;
 		$this->id = $id;
-		$this->emails = new Emails();
+		$this->emails	= new Emails();
+		$this->saveFile = new SaveFile();
 	}
 
 	/**
@@ -53,10 +56,18 @@ class Json {
 
 	/**
 	 * Return Emails
-	 * @return array
+	 * @return Emails
 	 */
 	public function getEmails() {
 		return $this->emails;
+	}
+
+	/**
+	 * Return savefile
+	 * @return SaveFile
+	 */
+	public function getSaveFile() {
+		return $this->saveFile;
 	}
 
 	/**
@@ -103,17 +114,32 @@ class Json {
 		}
 
 		$this->parseJsonEmails();
+		$this->parseJsonSaveFile();
 		$this->hasHeaders = $this->parseJsonForHeaders();
 	}
 
 	/**
-	 * Set Emails from JSON
+	 * Set / Parse Emails from JSON
 	 */
 	protected function parseJsonEmails() {
 		if (array_key_exists('email', $this->json) && empty($this->json['email']) === false) {
 			$this->emails->setToEmailsFromArray($this->json['email']);
 			$this->emails->setFromEmailFromArray(['address' => $this->json['fromemailaddress'], 'name' => $this->json['fromemailname']]);
 		}
+	}
+
+	/**
+	 * Set / Parse Save File data from JSON
+	 * @return bool
+	 */
+	protected function parseJsonSaveFile() {
+		if (empty($this->json['directory']) || empty($this->json['filename'])) {
+			return false;
+		}
+		$this->saveFile->setDir($this->json['directory']);
+		$this->saveFile->setfilename($this->json['filename']);
+		$this->saveFile->setAppendDatetime($this->json['appenddatetime']);
+		return true;
 	}
 
 	/**
