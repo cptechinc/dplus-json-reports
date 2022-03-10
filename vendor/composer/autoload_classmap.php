@@ -15,6 +15,7 @@ return array(
     'Dplus\\Reports\\Json\\Report\\Emails\\Email' => $baseDir . '/src/Json/Report/Emails/Email.php',
     'Dplus\\Reports\\Json\\Report\\Json' => $baseDir . '/src/Json/Report/Json.php',
     'Dplus\\Reports\\Json\\Report\\Pol' => $baseDir . '/src/Json/Report/Pol.php',
+    'Dplus\\Reports\\Json\\Report\\SaveFile' => $baseDir . '/src/Json/Report/SaveFile.php',
     'Dplus\\Reports\\Json\\Requests\\Cgibin' => $baseDir . '/src/Json/Requests/Cgibin.php',
     'Dplus\\Reports\\Json\\Requests\\Writer' => $baseDir . '/src/Json/Requests/Writer.php',
     'Dplus\\Reports\\Json\\Spreadsheets\\Report' => $baseDir . '/src/Json/Spreadsheets/Report.php',

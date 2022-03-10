@@ -10,7 +10,7 @@
  * @property array	$fields 	 Column Data
  * @property array	$data		 The Report Data
  * @property bool	$hasHeaders  Does Report Have Headings? (Different from Column Headings)
- * @property Emails $emails      
+ * @property Emails $emails      Emails to Send To / From
  */
 class Json {
 	protected $report = '';
