@@ -3,15 +3,26 @@
 /**
  * Report
  * 
+ * @property string      $code      Report Code (pol, program name)
  * @property string      $id        Report ID
  * @property string      $errorMsg  Error Message
  * @property Report\Json $json      Container for JSON data
  */
 class Report {
-	const CODE = '';
-	protected $id = '';
-	public $errorMsg = '';
+	protected $code = '';
+	protected $id   = '';
 	protected $json;
+	public    $errorMsg = '';
+
+	/**
+	 * Set Report ID
+	 * @param  string $id
+	 * @return void
+	 */
+	public function setCode($code) {
+		$this->code = $code;
+		return $this;
+	}
 
 	/**
 	 * Set Report ID
@@ -43,7 +54,7 @@ class Report {
 	 * Returns Code ID 
 	 */
 	protected function generateCodeId() {
-		return static::CODE . '-' . $this->id;
+		return $this->code . '-' . $this->id;
 	}
 
 	/**
@@ -77,7 +88,7 @@ class Report {
 			$this->errorMsg = Fetcher::instance()->errorMsg;
 			return false;
 		}
-		$jsonContainer = new Report\Json(static::CODE, $this->id);
+		$jsonContainer = new Report\Json($this->code, $this->id);
 		$jsonContainer->setJson($json);
 		$this->json = $jsonContainer;
 		return true;
@@ -89,6 +100,6 @@ class Report {
 	 */
 	public function request() {
 		$rqst = Requests\Cgibin::instance();
-		$rqst->request(static::CODE, $this->id) ;
+		$rqst->request($this->code, $this->id) ;
 	}
 }
