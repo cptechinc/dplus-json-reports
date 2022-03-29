@@ -35,11 +35,11 @@ class Report {
 	}
 
 	/**
-	 * Return Json
-	 * @return Report\Json
+	 * Return Report Code
+	 * @return string
 	 */
-	public function getJson() {
-		return $this->json;
+	public function getCode() {
+		return $this->code;
 	}
 
 	/**
@@ -48,6 +48,14 @@ class Report {
 	 */
 	public function getId() {
 		return $this->id;
+	}
+
+	/**
+	 * Return Json
+	 * @return Report\Json
+	 */
+	public function getJson() {
+		return $this->json;
 	}
 
 	/**
